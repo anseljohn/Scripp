@@ -1,19 +1,23 @@
 #!/bin/zsh
 
-FROM="~/Documents/vids/raw/drone/";
-TO="/Volumes/WD_BLACK/Cinema/Drone/Pics";
-
-JPG="*.JPG"
-
-for dir in $FROM; do
-	echo "$(basename $dir)";
+echo "Copying pictures..."
+for dir in ~/Documents/vids/raw/drone/*; do
 	FILE="$(basename $dir)";
-	if [ -e $TO/"$FILE" ]; then
-	    echo "File exists"
+	if [ -e /Volumes/WD_BLACK/Cinema/Drone/Pics/"$FILE" ]; then
+	    echo "$FILE exists"
 	else
-	    echo "File does not exist"
+		if [ ${dor: -4} == ".JPG" ];
+		then
+			cp -v "$dir" /Volumes/WD_BLACK/Cinema/Drone/Vids/"${$(basename $dir)%.JPG}".JPG
+		fi
+		if [ ${dir: -4} == ".MP4" ];
+		then
+			cp -v "$dir" /Volumes/WD_BLACK/Cinema/Drone/Vids/"${$(basename $dir)%.MP4}".MP4		
+		fi 
+		
+		echo "$FILE does not exist"
 	fi
-	echo "$FILE\n";
 done
-	
+echo "\n";
+
 
