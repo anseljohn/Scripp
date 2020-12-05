@@ -1,10 +1,14 @@
 #!/bin/zsh
 
+FROM="~/Documents/vids/raw/drone/";
+TO="/Volumes/WD_BLACK/Cinema/Drone/Pics";
 
-echo "Printing COMPUTER drone PICTURES"
-for dir in ~/Documents/vids/raw/drone/*.JPG; do
+JPG="*.JPG"
+
+for dir in $FROM; do
+	echo "$(basename $dir)";
 	FILE="$(basename $dir)";
-	if [ -e /Volumes/WD_BLACK/Cinema/Drone/Pics/"$FILE" ]; then
+	if [ -e $TO/"$FILE" ]; then
 	    echo "File exists"
 	else
 	    echo "File does not exist"
