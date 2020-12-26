@@ -12,20 +12,19 @@ then
 
 		if [ ! -e /Volumes/WD_BLACK/Cinema/Drone/Pics/"$FILE" ]
 		then
-			if [[ ${dor: -4} == ".JPG" ]]
+			if [[ ${dir: -4} == ".JPG" ]]
 			then
 				cp -v "$dir" /Volumes/WD_BLACK/Cinema/Drone/Vids/"${$(basename $dir)%.JPG}".JPG
 			else
 				if [[ ${dir: -4} == ".MP4" ]]
 				then
 					cp -v "$dir" /Volumes/WD_BLACK/Cinema/Drone/Vids/"${$(basename $dir)%.MP4}".MP4
-				fi 
+				fi
 			fi
-	
+
 			echo "$FILE does not exist... Copying...";
 		fi
 	done
 else
 	echo "ERROR: WD_BLACK NOT FOUND"
 fi
-
